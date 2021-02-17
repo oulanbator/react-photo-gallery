@@ -1,25 +1,26 @@
 # React Photo Gallery
 
-- Simple responsive photo gallery
-- Creates a grid of images, depending on how many images you give to it
-- Comes with an integrated lightbox (built with Swipper JS)
-- Handles basic keyboard control (for computer users), and touch control for mobile devices
+* Simple responsive photo gallery
+* Creates a grid of images, depending on how many images you give to it
+* Comes with an integrated lightbox (built with Swipper JS)
+* Handles basic keyboard control (for computer users), and touch control for mobile devices
 
 # Minimal Setup Example
 
 To build some examples locally, clone this repository :
-    git clone https://github.com/oulanbator/react-photo-gallery
+> git clone https://github.com/oulanbator/react-photo-gallery
 
 Then install dependencies and run:
-    npm install
-    npm start
+> npm install
+> 
+> npm start
 
 For the purpose of this demo, you can simply run the React App and then open localhost:3000 in a browser. The gallery will load images from https://picsum.photos/.
 
 By default, 23 images will be loaded (starting on id 11) from the picsum API. You can play with this behaviour with "picsumStartId" and "numberOfImages" props :
 
 Open "/src/index.js", then change this line as follow (e.g.) :
-    <Gallery picsumStartId={123} numberOfImages={50} />
+> \<Gallery picsumStartId={123} numberOfImages={50} /\>
 
 That's it !
 
