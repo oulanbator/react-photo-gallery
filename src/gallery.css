@@ -250,6 +250,7 @@ body{
     text-align: center;
 }
 .swiper-slide img{
-    max-height: 100vh;
-    max-width: 100%;
+    top: 1vh;
+    max-height: 98vh;
+    max-width: 98%;
 }

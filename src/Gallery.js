@@ -47,15 +47,12 @@ function SwiperBox ({sources, activeIndex, onCloseCall}) {
     onCloseCall()
   }
 
-  function handleKeyboard (keyCode) {
-    return keyCode === 27 ? onCloseCall() : null
-  }
   return <div id="box">
       <Swiper  
         id="main" 
         navigation
         keyboard
-        onKeyPress={(swiper, keyCode) => handleKeyboard(keyCode)}
+        onKeyPress={(swiper, keyCode) => {return keyCode === 27 ? handleClose() : null }}
         spaceBetween={5}
         autoHeight={true}
         onSwiper={(swiper) => {swiper.slideTo(activeIndex, 0)}}
@@ -205,28 +202,13 @@ function Gallery({picsumStartId = 11, numberOfImages = 23}) {
   const hideSwiper = (e) => {
     setDisplaySwiper(false)
   }
-  
-  const handleKeyboard = (swiper, keyCode) => {
-    // const currentImage = imageToShow
-    // if (keyCode === 37) {
-    //   swiper.slideTo((currentImage - 1), 300)
-    //   setImageToShow(currentImage - 1)
-    // }
-    // if (keyCode === 39) {
-    //   swiper.slideTo((currentImage + 1), 300)
-    //   setImageToShow(currentImage + 1)
-    // }
-    if (keyCode === 27) {
-      hideSwiper()
-    }
-  }
 
   return <div>
       { displaySwiper && (<SwiperBox 
             sources={SOURCES} 
-            activeIndex={imageToShow} 
-            onCloseCall={hideSwiper}
-            onKeyboard={handleKeyboard}/>)}
+            activeIndex={imageToShow}
+            // onKeyPress={handleKeyPress}
+            onCloseCall={hideSwiper}/>)}
       <GalleryGrid sources={SOURCES} onSwiperCall={showSwiper}/>
     </div>
 }
