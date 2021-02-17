@@ -40,18 +40,22 @@ function Closer ({onCloseCall}) {
   return <i className="fas fa-times" id="closebox" onClick={handleClose}></i>
 }
 
-function SwiperBox ({sources, activeIndex, onCloseCall, onKeyboard}) {
+function SwiperBox ({sources, activeIndex, onCloseCall}) {
   const slides = Slides(sources)
 
   const handleClose = () => {
     onCloseCall()
+  }
+
+  function handleKeyboard (keyCode) {
+    return keyCode === 27 ? onCloseCall() : null
   }
   return <div id="box">
       <Swiper  
         id="main" 
         navigation
         keyboard
-        onKeyPress={(swiper, keyCode) => onKeyboard(keyCode)}
+        onKeyPress={(swiper, keyCode) => handleKeyboard(keyCode)}
         spaceBetween={5}
         autoHeight={true}
         onSwiper={(swiper) => {swiper.slideTo(activeIndex, 0)}}
@@ -202,8 +206,17 @@ function Gallery({picsumStartId = 11, numberOfImages = 23}) {
     setDisplaySwiper(false)
   }
   
-  const handleKeyboard = (e) => {
-    if (e === 27) {
+  const handleKeyboard = (swiper, keyCode) => {
+    // const currentImage = imageToShow
+    // if (keyCode === 37) {
+    //   swiper.slideTo((currentImage - 1), 300)
+    //   setImageToShow(currentImage - 1)
+    // }
+    // if (keyCode === 39) {
+    //   swiper.slideTo((currentImage + 1), 300)
+    //   setImageToShow(currentImage + 1)
+    // }
+    if (keyCode === 27) {
       hideSwiper()
     }
   }
